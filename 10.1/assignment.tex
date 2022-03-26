@@ -1,0 +1,168 @@
+\documentclass[12pt,letterpaper, fleqn]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+
+\definecolor{limitblue}{RGB}{32, 76, 113}
+\definecolor{ruddybrown}{rgb}{0.73, 0.4, 0.16}
+\colorlet{punct}{red!60!black} 
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\definecolor{ogreen}{rgb}{0.0, 0.5, 0.0}
+\colorlet{numb}{magenta!60!black}
+ 
+\renewcommand\lstlistingname{Code}
+\renewcommand\lstlistlistingname{Codes}
+\def\lstlistingautorefname{Alg.}
+
+\lstdefinestyle{Python}{
+  language        = Python,
+  frame           = lines, 
+  basicstyle      = \footnotesize,
+  keywordstyle    = \color{blue},
+  stringstyle     = \color{green},
+  commentstyle    = \color{red}\ttfamily
+}
+\lstdefinestyle{R}{
+  language        = R,
+  frame           = lines,
+  captionpos      = b,
+  abovecaptionskip= 10pt, 
+  emphstyle       = \textbf,
+  framextopmargin = 4pt,
+  framexbottommargin = 4pt,
+  basicstyle      = \ttfamily\footnotesize,
+  keywordstyle    = \color{limitblue},
+  stringstyle     = \color{ruddybrown},
+  showstringspaces= false,
+  commentstyle    = \color{red}\ttfamily,
+  tabsize         = 2,
+  literate=
+    *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1}
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{Statistics I}
+\newcommand\hwnumber{10.1}                  % <-- homework number
+\newcommand\NetIDa{Atreya Choudhury}           % <-- NetID of person #1
+\newcommand\NetIDb{bmat2005}           % <-- NetID of person #2 (Comment this line out for problem sets)
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+\lhead{\NetIDa\\\NetIDb}                 % <-- Comment this line out for problem sets (make sure you are person #1)
+\chead{\textbf{\Large Assignment \hwnumber}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 2em
+
+\begin{document}
+We consider the simple linear regression setup
+
+\begin{enumerate}
+  \item Show that 
+  $$ \hat{\beta_1} \sim \mathcal{N}\biggl(\beta_1, \frac{\sigma^2}{SS_{XX}}\biggr) $$
+
+  \textit{Solution:}
+  \begin{flushleft}
+    For the linear regression model, $y = \beta_0 + \beta_1x + \epsilon$,\\
+    we assume that $\epsilon \sim \mathcal{N}(0, \sigma^2)$ for the least squares line
+
+    where $\hat{y} = \hat{\beta_0} + \hat{\beta_1}x$ is least squares line and
+    
+    \hspace{2.4em}
+    $\hat{\beta_1} = \frac{cov(XY)}{var(X)}$
+
+    \begin{equation}
+      \begin{split}
+        \therefore \frac{cov(XY)}{var(X)} &= \frac{\sum (x_i - \overline{x})(y_i - \overline{y})}{\sum (x_i - \overline{x})^2}\\
+        &= \frac{\sum (x_i - \overline{x})(\beta_0 + \beta_1x_i + \epsilon_i - \beta_0 - \beta_1\overline{x} - \overline{\epsilon})}{\sum (x_i - \overline{x})^2}\\
+        &= \frac{\sum (x_i - \overline{x})(\beta_1(x_i - \overline{x}) + \epsilon_i - \overline{\epsilon})}{\sum (x_i - \overline{x})^2}\\
+        &= \frac{\sum \beta_1(x_i - \overline{x})^2 + \sum \epsilon_i(x_i - \overline{x})}{\sum (x_i - \overline{x})^2}\\
+        &= \beta_1 + \frac{\sum \epsilon_i(x_i - \overline{x})}{SS_{XX}}\\
+        &= \hat{\beta_1}\\
+      \end{split}
+      \label{ratio}
+    \end{equation}
+
+    Let T be a random variable where $T \sim \mathcal{N}(0, \sigma^2) \sim \epsilon$
+
+    From equation \ref{ratio}, we have
+    \begin{equation}
+      \begin{split}
+        \hat{\beta_1} &= \beta_1 + \frac{T}{Var(X)} \hspace{5em} [\because Var(X)\text{ and }\beta_1\text{ are constants}]\\
+        \hat{\beta_1} &\sim \mathcal{N}\biggl(\beta_1, \frac{Var(T)}{Var(X)}\biggr) = \mathcal{N}\biggl(\beta_1, \frac{\sigma^2}{Var(X)}\biggr)
+      \end{split}
+    \end{equation}
+  \end{flushleft}
+  \newpage
+  \item For a fixed value x of the explanatory variable, let $\hat{y} = \hat{\beta_0} + \hat{\beta_1}x$. Show that
+  $$\hat{y} \sim \mathcal{N}\biggl(\beta_0 + \beta_1x, \biggl(\frac{1}{n} + \frac{(x-\overline{x})^2}{SS_{XX}}\biggr)\sigma^2 \biggr)$$
+
+  \textit{Solution:}
+  \begin{flushleft}
+    $\hat{\beta_1} = \frac{cov(XY)}{var(X)}$ and
+
+    $\hat{\beta_0} = \overline{y} - \hat{\beta_0}\overline{x}$
+
+    \begin{equation}
+      \begin{split}
+        \hat{y} &= \hat{\beta_0} + \hat{\beta_1}\hat{x}\\
+        &= \overline{y} + \hat{\beta_1}(x - \overline{x})\\
+        &= \beta_0 + \beta_1\overline{x} + (x - \overline{x})\frac{\sum (x_i - \overline{x})(y_i - \overline{y})}{\sum (x_i - \overline{x})^2}\\
+        &= \beta_0 + \beta_1\overline{x} + (x - \overline{x})\frac{\sum (x_i - \overline{x})(\beta_1(x_i - \overline{x}) + \epsilon_i)}{\sum (x_i - \overline{x})^2}\\
+        &= \beta_0 + \beta_1\overline{x} + (x - \overline{x})\frac{\sum \beta_1(x_i - \overline{x})^2}{\sum (x_i - \overline{x})^2} + (x - \overline{x})\frac{\sum \epsilon_i(x_i - \overline{x})}{\sum (x_i - \overline{x})^2}\\
+        &= \beta_0 + \beta_1x + (x - \overline{x})\frac{\sum \epsilon_i(x_i - \overline{x})}{\sum (x_i - \overline{x})^2}\\
+      \end{split}
+    \end{equation}
+
+    As $\epsilon_i \sim \mathcal{N}(0, \sigma^2)$,\\
+    $\hat{y}$ also has normal distribution
+
+    \begin{equation*}
+      \begin{split}
+        E[\hat{y}] &= \beta_0 + \beta_1x \text{ and}\\
+        Var(\hat{y}) &= \frac{SSE + n(x - \overline{x})^2}{n SS_{XX}}\sigma^2\\
+        &= \biggl(\frac{1}{n} + \frac{(x - \overline{x})^2}{SS_{XX}}\biggr)\sigma^2
+      \end{split}
+    \end{equation*}
+    Therefore, $\hat{y} \sim \mathcal{N}\biggl(\beta_0 + \beta_1x, \biggl(\frac{1}{n} + \frac{(x-\overline{x})^2}{SS_{XX}}\biggr)\sigma^2 \biggr)$
+  \end{flushleft}
+\end{enumerate}
+\end{document}

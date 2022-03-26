@@ -1,0 +1,145 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+
+\definecolor{limitblue}{RGB}{32, 76, 113}
+\definecolor{ruddybrown}{rgb}{0.73, 0.4, 0.16}
+\colorlet{punct}{red!60!black} 
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\definecolor{ogreen}{rgb}{0.0, 0.5, 0.0}
+\colorlet{numb}{magenta!60!black}
+ 
+\renewcommand\lstlistingname{Code}
+\renewcommand\lstlistlistingname{Codes}
+\def\lstlistingautorefname{Alg.}
+
+\lstdefinestyle{Python}{
+  language        = Python,
+  frame           = lines, 
+  basicstyle      = \footnotesize,
+  keywordstyle    = \color{blue},
+  stringstyle     = \color{green},
+  commentstyle    = \color{red}\ttfamily
+}
+\lstdefinestyle{R}{
+  language        = R,
+  frame           = lines,
+  captionpos      = b,
+  abovecaptionskip= 10pt, 
+  emphstyle       = \textbf,
+  framextopmargin = 4pt,
+  framexbottommargin = 4pt,
+  basicstyle      = \ttfamily\footnotesize,
+  keywordstyle    = \color{limitblue},
+  stringstyle     = \color{ruddybrown},
+  showstringspaces= false,
+  commentstyle    = \color{red}\ttfamily,
+  tabsize         = 2,
+  literate=
+    *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1}
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{Statistics I}
+\newcommand\hwnumber{9.2}                  % <-- homework number
+\newcommand\NetIDa{Atreya Choudhury}           % <-- NetID of person #1
+\newcommand\NetIDb{bmat2005}           % <-- NetID of person #2 (Comment this line out for problem sets)
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+\lhead{\NetIDa\\\NetIDb}                 % <-- Comment this line out for problem sets (make sure you are person #1)
+\chead{\textbf{\Large Assignment \hwnumber}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 2em
+
+\begin{document}
+\textit{Two soft drink machines dispense liquids of 10 ounces, on the average. The question is whether
+the two machines are equally consistent (i.e., equally variable) in the dispensing of the liquid.
+To answer this question, a sample of size 10 was obtained from each machine and the sample
+standard deviations were computed to be $s_1 = 1.87$ ounces and $s_2 = 1.25$ ounces. Perform the
+appropriate test for equality of variances using $\alpha = 0.05$.
+}
+
+\vspace{1em}
+
+[HINT: If X and Y are independent $\chi^2$ random variables with $n_1$ and $n_2$ df respectively, then
+$(X/n_1)/(Y/n_2)$ follows an $F(n_1, n_2)$ distribution.]
+
+\vspace{2em}
+
+\textbf{Solution:}
+
+The test of equality is given by
+
+$H_0$ : $\sigma_1 = \sigma_2$\\
+$H_a$ : $\sigma_1 \neq \sigma_2$
+
+We use the test statistic,
+\begin{equation}
+  \begin{split}
+    F &= \frac{s_1^2}{s_2^2}\\
+    &= \frac{(n_1 - 1)s_1^2}{(n_2 - 1)s_2^2} \hspace{4em}[\because n_1 = n_2]\\
+    &= \frac{\frac{(n_1 - 1)s_1^2}{\sigma_1^2}}{\frac{(n_2 - 1)s_2^2}{\sigma_2^2}} \hspace{5.3em}[\because \sigma_1 = \sigma_2]\\
+    &= \frac{\frac{1}{n_1 - 1}\frac{(n_1 - 1)s_1^2}{\sigma_1^2}}{\frac{1}{n_2 - 1}\frac{(n_2 - 1)s_2^2}{\sigma_2^2}}
+  \end{split}
+\end{equation}
+Therefore, the F statistic has $F(n_1 - 1, n_2 - 1)$ distribution as
+
+$\frac{(n_1 - 1)s_1^2}{\sigma_1^2} \sim \chi_{n_1 - 1}^2$ and $\frac{(n_2 - 1)s_2^2}{\sigma_2^2} \sim \chi_{n_2 - 1}^2$.
+
+The value of the F-statistic is given by,
+\begin{equation}
+  \begin{split}
+    F^* &= \frac{s_1^2}{s_2^2}\\
+    &= \frac{1.87^2}{1.25^2}\\
+    &\approx 2.238
+  \end{split}
+\end{equation}
+
+As $F_{\frac{\alpha}{2}} = 0.248 < F^* < F_{1 - \frac{\alpha}{2}} = 4.026$,
+we do not have sufficient evidence to reject the null hypothesis.
+
+The machines are consistent at $\alpha = 0.05$.
+\newpage
+\lstinputlisting[language=R, style=R, title=R Code]{code.R}
+\end{document}

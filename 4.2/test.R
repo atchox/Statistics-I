@@ -1,0 +1,1 @@
+print(table(x) / sample_count)

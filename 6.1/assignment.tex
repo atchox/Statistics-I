@@ -1,0 +1,159 @@
+\documentclass[12pt,letterpaper,fleqn]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+
+\definecolor{limitblue}{RGB}{32, 76, 113}
+\definecolor{ruddybrown}{rgb}{0.73, 0.4, 0.16}
+\colorlet{punct}{red!60!black} 
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\definecolor{ogreen}{rgb}{0.0, 0.5, 0.0}
+\colorlet{numb}{magenta!60!black}
+ 
+\renewcommand\lstlistingname{Code}
+\renewcommand\lstlistlistingname{Codes}
+\def\lstlistingautorefname{Alg.}
+
+\lstdefinestyle{Python}{
+  language        = Python,
+  frame           = lines, 
+  basicstyle      = \footnotesize,
+  keywordstyle    = \color{blue},
+  stringstyle     = \color{green},
+  commentstyle    = \color{red}\ttfamily
+}
+\lstdefinestyle{R}{
+  language        = R,
+  frame           = lines,
+  captionpos      = b,
+  abovecaptionskip= 10pt, 
+  emphstyle       = \textbf,
+  framextopmargin = 4pt,
+  framexbottommargin = 4pt,
+  basicstyle      = \ttfamily\footnotesize,
+  keywordstyle    = \color{limitblue},
+  stringstyle     = \color{ruddybrown},
+  showstringspaces= false,
+  commentstyle    = \color{red}\ttfamily,
+  tabsize         = 2,
+  literate=
+    *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1}
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{Statistics I}
+\newcommand\hwnumber{6.1}                  % <-- homework number
+\newcommand\NetIDa{Atreya Choudhury}           % <-- NetID of person #1
+\newcommand\NetIDb{bmat2005}           % <-- NetID of person #2 (Comment this line out for problem sets)
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+\lhead{\NetIDa\\\NetIDb}                 % <-- Comment this line out for problem sets (make sure you are person #1)
+\chead{\textbf{\Large Assignment \hwnumber}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 2em
+
+\begin{document}
+\begin{flushleft}
+  \begin{equation}
+    \begin{split}
+      &\hspace{1.4em}E[(\hat{\theta} - \theta)^2]\\
+      &= E[\hat{\theta}^2] - 2\theta E[\hat{\theta}^2] + \theta ^2\\
+      &= (E[\hat{\theta}]^2 - 2\theta E[\hat{\theta}^2] + \theta ^2) + (E[\hat{\theta}^2] - [\hat{\theta}]^2)\\
+      &= (E[\hat{\theta}] - \theta)^2 + Variance\\
+      &= Bias^2 + Variance\\
+    \end{split}
+  \end{equation}
+  We find the mean squared error of X
+  \begin{equation}
+    \begin{split}
+      &\hspace{1.4em}Bias[X]\\
+      &= E[X] - \sum_{i=1}^n p_i\\
+      &= E\Biggl[\sum_{i=1}^n X_i\Biggr] - \sum_{i=1}^n p_i\\
+      &= \sum_{i=1}^n (E[X_i] - p_i)\\
+      &= \sum_{i=1}^n 0\\
+      &= 0
+    \end{split}
+  \end{equation}
+  \begin{equation}
+    \begin{split}
+      &\hspace{1.4em}Variance[X]\\
+      &= E[X^2] - E[X]^2\\
+      &= E\Biggl[\Biggl(\sum_{i=1}^n X_i\Biggr)^2\Biggr] - E\Biggl[\sum_{i=1}^n X_i\Biggr]^2\\
+      &= E\Biggl[\sum_{i=1}^n {X_i}^2 + \sum_{i \neq j} X_i X_j \Biggr] - \Biggl(\sum_{i=1}^n p_i\Biggr)^2\\
+      &= E\Biggl[\sum_{i=1}^n {X_i}^2\Biggr] + E\Biggl[\sum_{i \neq j} X_i X_j \Biggr] - \Biggl(\sum_{i=1}^n p_i\Biggr)^2\\
+      &= \sum_{i=1}^n p_i + \sum_{i \neq j} E[X_i]E[X_j] - \Biggl(\sum_{i=1}^n p_i\Biggr)^2 \hfill [\because X_i's\text{ are independent}]\\
+      &= \sum_{i=1}^n p_i + \sum_{i \neq j} p_i p_j - \Biggl(\sum_{i=1}^n p_i\Biggr)^2\\
+      &= \sum_{i=1}^n p_i + \sum_{i \neq j} p_i p_j - \sum_{i=1}^n p_i^2 - \sum_{i \neq j} p_i p_j\\
+      &= \sum_{i=1}^n p_i - \sum_{i=1}^n p_i^2\\
+      &= n \overline{p} - \sum_{i=1}^n p_i^2
+    \end{split}
+  \end{equation}
+  We find the mean squared error of Y
+  \begin{equation}
+    \begin{split}
+      &\hspace{1.4em}Bias[Y]\\
+      &= E[Y] - \sum_{i=1}^n p_i\\
+      &= n\overline{p} - n\overline{p}\\
+      &= 0
+    \end{split}
+  \end{equation}
+  \begin{equation}
+    \begin{split}
+      &\hspace{1.4em}Variance[Y]\\
+      &= E[Y^2] - E[Y]^2\\
+      &= n\overline{p} - n\overline{p}^2
+    \end{split}
+  \end{equation}
+  \begin{equation}
+    \begin{split}
+      &\hspace{1.4em}MSE[X]\\
+      &= n \overline{p} - \sum_{i=1}^n p_i^2\\
+      &\leq n \overline{p} - n \biggl(\sum_{i=1}^n p_i\biggr)^2 \hfill[\text{Cauchy-Schwarz Inequality}]\\
+      &\leq n \overline{p} - n \overline{p}^2\\
+      &\leq n \overline{p} - n \overline{p}^2\\
+      &\leq MSE[Y]
+    \end{split}
+  \end{equation}
+  $\therefore$ X is a better estimator than Y.
+\end{flushleft}
+\end{document}

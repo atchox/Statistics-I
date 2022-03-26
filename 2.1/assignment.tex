@@ -1,0 +1,108 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+ 
+\renewcommand\lstlistingname{Algorithm}
+\renewcommand\lstlistlistingname{Algorithms}
+\def\lstlistingautorefname{Alg.}
+
+\lstdefinestyle{Python}{
+    language        = Python,
+    frame           = lines, 
+    basicstyle      = \footnotesize,
+    keywordstyle    = \color{blue},
+    stringstyle     = \color{green},
+    commentstyle    = \color{red}\ttfamily
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{Statistics I}
+\newcommand\hwnumber{2.1}                  % <-- homework number
+\newcommand\NetIDa{Atreya Choudhury}           % <-- NetID of person #1
+\newcommand\NetIDb{bmat2005}           % <-- NetID of person #2 (Comment this line out for problem sets)
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+\lhead{\NetIDa\\\NetIDb}                 % <-- Comment this line out for problem sets (make sure you are person #1)
+\chead{\textbf{\Large Assignment \hwnumber}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 2em
+
+\begin{document}
+\textbf{Question:}
+\textit{The data on dentary depth of molars (in millimeters) for 18 cheek teeth extracted from skulls are reproduced below from the American Journal of Physical Anthropology (Vol. 142, 2010) study of the characteristics of cheek teeth (e.g., molars) in an extinct primate species.}
+\begin{center}
+  18.12 16.55 19.48 15.70 19.36 17.83 15.94 13.25 15.83 16.12 19.70 18.13 15.76 14.02 17.00 14.04 13.96 16.20
+\end{center}
+
+\begin{enumerate}[1.] \setlength{\itemsep}{30pt}
+  \item \textit{Find the sample mean}
+
+  \textbf{\textit{Answer: }}
+  
+  The sample mean is \textbf{16.50}
+  \item \textit{Find the sample median}
+  
+  \textbf{\textit{Answer: }}
+  
+  The sample median is \textbf{16.16}
+  \item \textit{Based on the values of the mean and median, are the measurements symmetric or skewed? Why?}
+  
+  \textbf{\textit{Answer: }}
+
+  The measurements are skewed right
+
+  The mean is greater than the median.
+  \item \textit{Find the interquartile range}
+  
+  \textbf{\textit{Answer: }}
+
+  The interquartile range is \textbf{2.84}
+  \item \textit{Find the sample standard deviation}
+  
+  \textbf{\textit{Answer: }}
+
+  The sample standard deviation is \textbf{1.97}
+  \newpage
+  \item \textit{What percentage of values lie between 2 sd's of the mean?}
+  
+  \textbf{\textit{Answer: }}
+
+  \textbf{100\%} percent of values lie between 2 sd's of the mean.
+  \item \textit{According to Chebyshev's theorem, what percentage of values are guaranteed to lie within 2 sd's of the mean?}
+  
+  \textbf{\textit{Answer: }}
+
+  According to Chebyshev's theorem, \textbf{75\%} percentage of values are guaranteed to lie within 2 sd's of the mean.
+  \item \textit{Using the Z-score, conclude if the value 13.25 an outlier. Explain.}
+  
+  \textbf{\textit{Answer: }}
+
+  13.25 is not an outlier.
+
+  It's z-score is \textbf{-1.65} which is between -3 and 3 and hence, not considered as an outlier.
+
+\end{enumerate}
+\end{document}

@@ -1,0 +1,17 @@
+generated <- replicate(1000, rgamma(2, 5))
+converted <- generated[1, ] / (generated[1, ] + generated[2, ])
+png("Histogram_1.png")
+h1 <- hist(converted, breaks = 0:10 / 10, main = "1b")
+counts1 <- h1$counts
+print("Number of observations in each interval in 1:")
+print(counts1)
+dev.off()
+generated <- replicate(1000, rbeta(1, 5, 5))
+png("Histogram_2.png")
+h2 <- hist(generated, breaks = 0:10 / 10, main = "2b")
+counts2 <- h2$counts
+print("Number of observations in each interval in 2:")
+print(counts2)
+dev.off()
+print("Difference in number of observations in each interval:")
+print(counts1 - counts2)

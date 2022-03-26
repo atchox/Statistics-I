@@ -1,0 +1,97 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+ 
+\renewcommand\lstlistingname{Algorithm}
+\renewcommand\lstlistlistingname{Algorithms}
+\def\lstlistingautorefname{Alg.}
+
+\lstdefinestyle{Python}{
+    language        = Python,
+    frame           = lines, 
+    basicstyle      = \footnotesize,
+    keywordstyle    = \color{blue},
+    stringstyle     = \color{green},
+    commentstyle    = \color{red}\ttfamily
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{Statistics I}
+\newcommand\hwnumber{1.2}                  % <-- homework number
+\newcommand\NetIDa{Atreya Choudhury}           % <-- NetID of person #1
+\newcommand\NetIDb{bmat2005}           % <-- NetID of person #2 (Comment this line out for problem sets)
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+\lhead{\NetIDa\\\NetIDb}                 % <-- Comment this line out for problem sets (make sure you are person #1)
+\chead{\textbf{\Large Assignment \hwnumber}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 2em
+
+\begin{document}
+\textbf{Question:}
+\textit{In each of the following cases, comment if there is selection, response or nonresponse bias. Give reasons. How would you avoid these biases in each case?}
+
+\begin{enumerate}[1.] \setlength{\itemsep}{30pt}
+  \item \textit{The quantity of interest is average time spent on the internet for persons with internet access. The question is posted in surveymonkey and volunteers respond.}
+
+  \textbf{\textit{Answer: }}
+  
+  This study is subject to non response bias.
+
+  We can assume that volunteers on \textit{surveymonkey} are people who spend quite some time on the internet.
+  Daily users usually do not go around filling surveys.
+  So, we miss out on casual users who like to, say, google the occasional phrase or scroll through their social media feed.
+
+  The survey should be sneaked into popular sites which see a lot of daily traffic.
+  A \textbf{small} survey on Instagram or FaceBook or, say, on top of a Google search results page would be more effective.
+  Filling surveys can be incentivised by offering vouchers or lottery tickets.
+  \item \textit{For collecting data on how supportive the population is on gay marriages, a journalist surveys participants in a pride parade.}
+  
+  \textbf{\textit{Answer: }}
+  
+  This study is subject to selection bias.
+
+  Most people participating in the pride parade are supportive of gay marriages.
+  People who are not supportive will not attend the parade.
+  The journalist will miss out on the survey of people who are not supportive of gay marriages.
+
+  The journalist should use anonymous submissions choosing people at random from a \textbf{general} population.
+  It is essential that the submissions should be anonymous or else that could be cause for response bias.
+  
+  \item \textit{To measure the prevalence of cheating in college, students of a college are asked if they ever cheated in any exam.}
+  
+  \textbf{\textit{Answer: }}
+
+  This study is subject to response bias.
+
+  It is a sensitive question and people who have actually cheated in exams will not say that they have cheated.
+  The people who have not cheated will definitely not say that they have.
+  This would cause the data to be extremely skewed.
+
+  The process should be made as anonymous as possible, like say anonymous submissions into a secure box.
+
+\end{enumerate}
+\end{document}

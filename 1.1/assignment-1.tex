@@ -1,0 +1,86 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+ 
+\renewcommand\lstlistingname{Algorithm}
+\renewcommand\lstlistlistingname{Algorithms}
+\def\lstlistingautorefname{Alg.}
+
+\lstdefinestyle{Python}{
+  language        = Python,
+  frame           = lines, 
+  basicstyle      = \footnotesize,
+  keywordstyle    = \color{blue},
+  stringstyle     = \color{green},
+  commentstyle    = \color{red}\ttfamily
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{Statistics I}
+\newcommand\hwnumber{1.1}                  % <-- homework number
+\newcommand\NetIDa{Atreya Choudhury}           % <-- NetID of person #1
+\newcommand\NetIDb{bmat2005}           % <-- NetID of person #2 (Comment this line out for problem sets)
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+\lhead{\NetIDa\\\NetIDb}                 % <-- Comment this line out for problem sets (make sure you are person #1)
+\chead{\textbf{\Large Assignment \hwnumber}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 2em
+
+\begin{document}
+\textbf{Question:}
+\textit{In the Journal of Earthquake Engineering (Nov. 2004), a team of civil and environmental engineers studied the ground motion characteristics of 15 earthquakes that occurred around the world since 1940. Three (of many) variables measured on each earthquake were the type of ground motion (short, long, or forward directive), the magnitude of the earthquake (on the Richter scale), and peak ground acceleration (feet per second). One of the goals of the study was to estimate the inelastic spectra of any ground motion cycle.}
+
+\begin{enumerate}[a.] \setlength{\itemsep}{30pt}
+  \item \textit{Identify the experimental units for this study.}
+
+  \textbf{\textit{Answer: }}
+  
+  Each of the 15 earthquakes is an experimental unit for this study.
+  \item \textit{Do the data for the 15 earthquakes represent a population or a sample? Explain.}
+  
+  \textbf{\textit{Answer: }}
+  
+  The data represents a sample.
+  
+  Of all the earthquakes that have occurred since 1940 (which represents the population), we are considering only 15 of them which makes up a sample of the population.
+  \item \textit{Define the variables measured and classify them as quantitative or qualitative.}
+  
+  \textbf{\textit{Answer: }}
+  
+  \begin{enumerate}[i.]
+    \item \textbf{type of ground motion:} This is a qualitative variable and can be of three types, short, long, or forward directive.
+    \item \textbf{magnitude of earthquake:} This is a quantitative continuous variable and can take any value on the Richter scale ranging from 1 to 10.
+    \item \textbf{peak ground acceleration:} This is also a quantitative continuous variable measured in feet per second.
+  \end{enumerate}
+  \item \textit{What method of data collection is used?}
+  
+  \textbf{\textit{Answer: }}
+
+  This is an observational study.
+
+\end{enumerate}
+\end{document}
